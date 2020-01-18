@@ -1,18 +1,37 @@
-/*import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 //import { render } from 'react-dom';
 import Constants from 'expo-constants';
+import { useState } from 'react';
 
-export default function App() {  
+export default function App() { 
+  const [enteredGoal, setEnteredGoal] = useState ('');
+  const [courseGoals, setCourseGoals] = useState([]);
+
+  const goalInputHandler = (enterText) => {
+    setEnteredGoal(enterText);
+  }
+
+  const addGoalHandler = () => {
+      setCourseGoals(currentGoals => [...currentGoals, enteredGoal])
+    //console.log(enteredGoal);
+  }
   return (
     <View style={{padding:50}}>
        <View style={{styles,inputContainer}}> 
          <TextInput    placeholder="Search Here" />
-          style={{borderColor:"blue", borderWidth:4 }}/>
-          <button title="Add"/> 
+          style={{borderColor:"blue", borderWidth:4 }}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
+          />
+          <button title="Add" onPress={addGoalHandler}/> 
         </View>
       <Text>Hello React Native</Text>
         <Button title="Press me" onPress={() => Alert.alert('Cannot press this one')} />    
+        <View>
+  {courseGoals.map((goal) => <Text>{goal}</Text>)}
+
+        </View>
        </View>
 );
 }
@@ -26,7 +45,9 @@ inputContainer:{
    justifyContent: 'space-between', 
    alignItems:'center'
 }
-});*/
+});
+
+/*
 import React, { Component } from 'react';
 import { Text, TextInput, View,Button } from 'react-native';
 
@@ -38,6 +59,7 @@ export default class PizzaTranslator extends Component {
 
   render() {
     return (
+      <View style={{padding:50}}>     
       <View style={{padding: 100, flexDirection:"column", justifyContent:"center" }}>
         <TextInput
           style={{height: 100,borderWidth:3,borderColor:"red",width:200}}
@@ -52,7 +74,8 @@ export default class PizzaTranslator extends Component {
         
         <Button  onPress={() => {    alert('You tapped the button!');}}  title="login In"/>
       </View>
+      </View>   
     );
   }
 }
-
+*/
