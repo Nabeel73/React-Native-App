@@ -1,9 +1,5 @@
-
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-//import { render } from 'react-dom';
-import Constants from 'expo-constants';
-import { useState } from 'react';
+import { StyleSheet,Button,Text,View,TextInput } from 'react-native';
 
 export default function App() { 
   const [enteredGoal, setEnteredGoal] = useState ('');
@@ -19,18 +15,17 @@ export default function App() {
   }
   return (
     <View style={{padding:50}}>
-       <View style={{styles,inputContainer}}> 
-         <TextInput    placeholder="Search Here" />
-          style={{borderColor:"blue", borderWidth:4 }}
+     <Text>Hello React Native</Text>
+       <View style={{styles}}> 
+         <TextInput placeholder="Search Here"
+          style={{borderColor:"black",
+          borderWidth:2 }}
           onChangeText={goalInputHandler}
-          value={enteredGoal}
-          />
-          <button title="Add" onPress={addGoalHandler}/> 
-        </View>
-      <Text>Hello React Native</Text>
-        <Button title="Press me" onPress={() => Alert.alert('Cannot press this one')} />    
-        <View>
-  {courseGoals.map((goal) => <Text>{goal}</Text>)}
+          value={enteredGoal}/>
+          <Button title="Add" onPress={addGoalHandler}/> 
+        </View>  
+       <View>
+     {courseGoals.map((goal) => <Text>{goal}</Text>)}
 
         </View>
        </View>
@@ -47,34 +42,3 @@ inputContainer:{
    alignItems:'center'
 }
 });
-
-/*
-import React, { Component } from 'react';
-import { Text, TextInput, View,Button } from 'react-native';
-export default class PizzaTranslator extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
-  render() {
-    return (
-      <View style={{padding:50}}>     
-      <View style={{padding: 100, flexDirection:"column", justifyContent:"center" }}>
-        <TextInput
-          style={{height: 100,borderWidth:3,borderColor:"red",width:200}}
-          placeholder="Type here to translate!"
-          onChangeText={(text) => this.setState({text})}
-          value={this.state.text}
-        />
-        <Text style={{padding: 10, fontSize: 42, }}>
-          {this.state.text.split(' ').map((word) => word && '').join(' ')}
-        </Text>
-        <Button  onPress={() => {    alert('You tapped the button!');}}  title="ADD"/>
-        
-        <Button  onPress={() => {    alert('You tapped the button!');}}  title="login In"/>
-      </View>
-      </View>   
-    );
-  }
-}
-*/
