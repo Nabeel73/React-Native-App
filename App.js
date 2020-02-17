@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet,Button,Text,View,TextInput } from 'react-native';
+import { StyleSheet,Button,Text,View,TextInput,ScrollView,FlatList } from 'react-native';
 
 export default function App() { 
   const [enteredGoal, setEnteredGoal] = useState ('');
@@ -14,31 +14,43 @@ export default function App() {
     //console.log(enteredGoal);
   }
   return (
-    <View style={{padding:50}}>
+    <View style={styles.screen}>
      <Text>Hello React Native</Text>
-       <View style={{styles}}> 
+       <View style={styles.InputContainer}> 
          <TextInput placeholder="Search Here"
           style={{borderColor:"black",
           borderWidth:2 }}
           onChangeText={goalInputHandler}
           value={enteredGoal}/>
           <Button title="Add" onPress={addGoalHandler}/> 
-        </View>  
-       <View>
-     {courseGoals.map((goal) => <Text>{goal}</Text>)}
+       </View>  
+       //Using ScrollView for scrolling the list items 
+       //Note: for whole page scrollable use scollView tag as Container
+       //ScrollView use depends on list of items or depend on the condition 1 to 20 are               enough after 20 or 10 more items we use flatlist view as an array type.
 
-        </View>
+      /*<ScrollView>
+          {courseGoals.map(goal => (
+           <View key={goal}
+             style={styles.listItem}><Text>{goal}</Text></View>))}
+          </ScrollView>*/
+
        </View>
-);
-}
+);}
 
 const styles = StyleSheet.create({
 screen:{
   padding: 50
 },
-inputContainer:{
- // flexDirection: 'row',
+InputContainer:{
+   flexDirection: 'row',
    justifyContent: 'space-between', 
    alignItems:'center'
+},
+listItem:{
+padding:10,
+marginVertical:5,
+borderColor:'red',
+borderWidth:1,
+backgroundColor:'lightgrey'
 }
 });
