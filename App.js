@@ -10,9 +10,14 @@ export default function App() {
   }
 
   const addGoalHandler = () => {
-      setCourseGoals(currentGoals => [...currentGoals, enteredGoal])
-    //console.log(enteredGoal);
-  }
+       setCourseGoals(currentGoals => [
+       ...currentGoals,
+        { id: Math.random().toString(), value: enteredGoal}
+       ]);
+   //In Native App we use Key or id both as an tag    
+   //setCourseGoals(currentGoals => [...currentGoals, enteredGoal])
+   //console.log(enteredGoal);
+  };
   return (
     <View style={styles.screen}>
      <Text>Hello React Native</Text>
@@ -33,7 +38,14 @@ export default function App() {
            <View key={goal}
              style={styles.listItem}><Text>{goal}</Text></View>))}
           </ScrollView>*/
-
+          //flatlist has 2 porpoerties one is data 
+        <FlatList 
+        keyExtractor={(item,index) => item.id}
+          data={courseGoals} renderItem={itemData => (
+             <View style={styles.listItem}>
+             <Text>{itemData.item.value}</Text>
+             </View>
+          )}/>
        </View>
 );}
 
