@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet,Button,Text,View,TextInput,ScrollView,FlatList } from 'react-native';
+import { Image } from 'react-native';
+import { TouchableOpacity,StyleSheet,Button,Text,View,TextInput,ScrollView,FlatList } from 'react-native';
 import GoalItem from './components/GoalItem';
 
 export default function App() { 
@@ -8,7 +9,7 @@ export default function App() {
 
   const goalInputHandler = (enterText) => {
     setEnteredGoal(enterText);
-  }
+  };
 
   const addGoalHandler = () => {
        setCourseGoals(currentGoals => [
@@ -21,11 +22,9 @@ export default function App() {
   };
   return (
     <View style={styles.screen}>
-     <Text>Hello React Native</Text>
+     <Text>Hello React Native</Text>     
        <View style={styles.InputContainer}> 
-         <TextInput placeholder="Search Here"
-          style={{borderColor:"black",
-          borderWidth:2 }}
+         <TextInput style={styles.input} placeholder="Search Here"      
           onChangeText={goalInputHandler}
           value={enteredGoal}/>
           <Button title="Add" onPress={addGoalHandler}/> 
@@ -33,7 +32,6 @@ export default function App() {
        //Using ScrollView for scrolling the list items 
        //Note: for whole page scrollable use scollView tag as Container
        //ScrollView use depends on list of items or depend on the condition 1 to 20 are               enough after 20 or 10 more items we use flatlist view as an array type.
-
       /*<ScrollView>
           {courseGoals.map(goal => (
            <View key={goal}
@@ -47,6 +45,14 @@ export default function App() {
              <Text>{itemData.item.value}</Text>
              </View>
           )}/>
+          <TouchableOpacity
+  accessible={true}
+  accessibilityLabel="Tap me!"
+  onPress={this._onPress}>
+  <View style={styles.button}>
+    <Text style={styles.buttonText}>Press me!</Text>
+  </View>
+</TouchableOpacity>
        </View>
 );}
 
@@ -54,9 +60,15 @@ const styles = StyleSheet.create({
 screen:{
   padding: 50
 },
+input:{
+  backgroundColor:'yellow',
+  borderColor:"black",
+  borderWidth:1,
+  width:50
+},
 InputContainer:{
    flexDirection: 'row',
-   justifyContent: 'space-between', 
+   justifyContent: 'space-between',
    alignItems:'center'
 },
 listItem:{
@@ -65,5 +77,13 @@ marginVertical:5,
 borderColor:'red',
 borderWidth:1,
 backgroundColor:'lightgrey'
+},
+buttonText:{
+   backgroundColor:'black',
+   color:'white',
+   width:50,
+   height:20,
+   textAlign:'center'
+   
 }
 });

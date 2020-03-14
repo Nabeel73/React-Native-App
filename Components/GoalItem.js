@@ -22,6 +22,4 @@ backgroundColor:'lightgrey'
 
 });
 
-
-
-export default GoalItem
+export default GoalItem;

@@ -1,5 +1,5 @@
 import React from 'react';
-//import {View, Text, StyleSheet} from 'react-native';
+import {View, TextInput,Button, StyleSheet} from 'react-native';
 
 
 const GoalInput = props => {
@@ -13,11 +13,8 @@ const GoalInput = props => {
           value={enteredGoal}/>
           <Button title="Add" onPress={addGoalHandler}/> 
        </View>  
-      
-
- );
+   );
 };
-
 
 const styles = StyleSheet.create({
 
